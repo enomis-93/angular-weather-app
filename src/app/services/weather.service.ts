@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  constructor(private http: HttpClientModule) {}
+  constructor(private http: HttpClient) {}
 
   getData() {
     return this.http.get(
