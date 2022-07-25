@@ -1,14 +1,26 @@
-<div class="col-md-12 d-flex flex-wrap">
-  <div class="col-12 col-sm-6">
-    <i class="wi wi-strong-wind" title="wind"></i>{{ getWind() || "-" }}
+<div class="row col-md-12 d-flex flex-wrap text-center text-sm-start">
+  <div
+    class="col-12 col-sm-6 d-flex justify-content-between justify-content-sm-start"
+  >
+    <i class="wi wi-strong-wind" title="wind"></i
+    ><span class="px-2">{{ getWind() || "-" }}</span>
   </div>
-  <div class="col-12 col-sm-6">
-    <i class="wi wi-humidity" title="relative_humidity"></i>{{ getHumidity() }}
+  <div
+    class="col-12 col-sm-6 d-flex justify-content-between justify-content-sm-start"
+  >
+    <i class="wi wi-humidity" title="relative_humidity"></i
+    ><span class="px-2">{{ getHumidity() }}</span>
   </div>
-  <div class="col-12 col-sm-6">
-    <i class="wi wi-fog" title="cloudcover"></i>{{ getCloudCoverTot() }}
+  <div
+    class="col-12 col-sm-6 d-flex justify-content-between justify-content-sm-start"
+  >
+    <i class="wi wi-fog" title="cloudcover"></i
+    ><span class="px-2">{{ getCloudCoverTot() }}</span>
   </div>
-  <div class="col-12 col-sm-6">
-    <i class="wi wi-barometer" title="surface_pressure"></i>{{ getPressure() }}
+  <div
+    class="col-12 col-sm-6 d-flex justify-content-between justify-content-sm-start"
+  >
+    <i class="wi wi-barometer" title="surface_pressure"></i
+    ><span class="px-2">{{ getPressure() }}</span>
   </div>
 </div>
