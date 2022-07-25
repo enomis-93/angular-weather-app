@@ -15,22 +15,19 @@ export class WeatherIconComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.weatherIco = "<i class='wi wi-na'></i>";
-    this.dayTimeString();
+    this.dayTimeString(this.time);
     this.calculateDayTime();
   }
 
-  setWeatherIco(weatherCode: any): void {
+  setWeatherIco(weatherCode: any, isDay: boolean, dayTime: string): void {
     switch (weatherCode) {
       case 0: // Clear Sky
-        this.isDay
+        isDay
           ? (this.weatherIco = `<i class="wi wi-day-sunny"></i>`)
           : (this.weatherIco = '<i class="wi wi-night-clear"></i>');
         break;
       case 1 || 2: // Mainly Clear
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-cloudy"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}cloudy"></i>`;
         break;
       // case 2: // Partly Clody
       //   break;
@@ -39,18 +36,14 @@ export class WeatherIconComponent implements OnInit {
         break;
       case 45:
       case 48: // Fog
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-fog"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}fog"></i>`;
         break;
       // case 48: // Depositing rime fog
       //   break;
       case 51:
       case 53:
       case 55: // Drizzle
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-sprinkle"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}sprinkle"></i>`;
         break;
       // case 53: // Drizzle: Moderate
       //   break;
@@ -58,18 +51,14 @@ export class WeatherIconComponent implements OnInit {
       //   break;
       case 56:
       case 57: // Freezing Drizzle: Light
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-hail"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}hail"></i>`;
         break;
       // case 57: // Freezing Drizzle: dense intensity
       //   break;
       case 61:
       case 63:
       case 65: // Rain: Slight
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-rain"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}rain"></i>`;
         break;
       // case 63: // Rain: moderate
       //   break;
@@ -77,9 +66,7 @@ export class WeatherIconComponent implements OnInit {
       //   break;
       case 66:
       case 67: // Freezing Rain: Light
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-sleet"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}sleet"></i>`;
         break;
       // case 67: // Freezing Rain: heavy intensity
       //   break;
@@ -89,9 +76,7 @@ export class WeatherIconComponent implements OnInit {
       case 77:
       case 85:
       case 86: // Snow fall: Slight
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-snow"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}snow"></i>`;
         break;
       // case 73: // Snow fall: moderate
       //   break;
@@ -106,28 +91,20 @@ export class WeatherIconComponent implements OnInit {
       case 80:
       case 81:
       case 82: // Rain showers: Slight
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-showers"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}showers"></i>`;
         break;
       // case 81: // Rain showers: moderate
       //   break;
       // case 82: // Rain showers: violent
       //   break;
       case 95: // Thunderstorm: Slight or moderate
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-thunderstorm"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}thunderstorm"></i>`;
         break;
       case 96: // Thunderstorm with slight hail
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-sleet-storm"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}sleet-storm"></i>`;
         break;
       case 99: // Thunderstorm with heavy hail
-        this.weatherIco = `<i class="wi wi-${this.dayTimeString(
-          this.isDay ? '' : '-alt'
-        )}-snow-thunderstorm"></i>`;
+        this.weatherIco = `<i class="wi wi-${dayTime}snow-thunderstorm"></i>`;
         break;
 
       default:
@@ -147,21 +124,25 @@ export class WeatherIconComponent implements OnInit {
       if (hour.charAt(0) == '0') {
         hour.replace(hour.charAt(0), '');
       }
-      this.time = parseInt(hour);
 
+      this.time = parseInt(hour);
       (this.time >= 0 && this.time <= 6) || (this.time >= 18 && this.time <= 24)
         ? (this.isDay = false)
         : (this.isDay = true);
-      this.setWeatherIco(this.weatherCodeID);
+
+      this.setWeatherIco(
+        this.weatherCodeID,
+        this.isDay,
+        this.dayTimeString(this.time)
+      );
     } else {
       this.time = 0;
     }
   }
 
-  dayTimeString(alt = '') {
-    return (this.time >= 0 && this.time <= 6) ||
-      (this.time >= 18 && this.time <= 24)
-      ? `night${alt}`
-      : 'day';
+  dayTimeString(time: number) {
+    return (time >= 0 && time <= 6) || (time >= 18 && time <= 24)
+      ? `night-alt-`
+      : 'day-';
   }
 }

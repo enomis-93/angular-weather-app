@@ -1,4 +1,6 @@
 <div [innerHtml]="weatherIco" class="w_ico"></div>
+
 <div>
-  time: {{ calculateDayTime() }} {{ time }} {{ dayTimeString() }} {{ isDay }}
+  time: {{ calculateDayTime() }} {{ time }} {{ dayTimeString(time) }}
+  {{ isDay }}
 </div>
