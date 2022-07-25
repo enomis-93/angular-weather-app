@@ -2,7 +2,11 @@
   <h4>{{ currentDay }}</h4>
   <p>{{ weatherCode }}</p>
   <p class="fw-bold p-1">
-    <i class="wi wi-direction-up p-1"></i>{{ tempMax }} °C
+    <i class="wi wi-direction-up p-1"></i>{{ tempMax.toFixed(1) }}
+    {{ tempUnit }}
   </p>
-  <p><i class="wi wi-direction-down p-1"></i>{{ tempMin }} °C</p>
+  <p>
+    <i class="wi wi-direction-down p-1"></i>{{ tempMin.toFixed(1)
+    }}{{ tempUnit }}
+  </p>
 </div>

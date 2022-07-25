@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   latitude!: number;
   longitude!: number;
   timeZone!: string;
+  isCelsius: boolean = true;
 
   currentDateTime!: string;
   dateTimeID!: number;
@@ -50,5 +51,9 @@ export class AppComponent implements OnInit {
         this.weatherCodeID = res.hourly.weathercode[this.dateTimeID];
         this.dailyData = res.daily;
       });
+  }
+
+  tempUnitHandler(isCelsius: any) {
+    this.isCelsius = isCelsius;
   }
 }

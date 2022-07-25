@@ -16,6 +16,7 @@
         <div>
           <app-temperature
             [temperature]="weatherData?.current_weather?.temperature || 0"
+            (tempUnitChanged)="tempUnitHandler($event)"
           ></app-temperature>
         </div>
       </div>
@@ -28,6 +29,7 @@
       <app-week-forecast
         [totNextDays]="weatherData?.daily?.time"
         [dailyData]="weatherData?.daily"
+        [isCelsius]="isCelsius"
       ></app-week-forecast>
     </div>
   </div>

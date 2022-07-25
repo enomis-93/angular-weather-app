@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class WeekForecastComponent implements OnInit {
   @Input() totNextDays!: string[];
   @Input() dailyData!: [];
+  @Input() isCelsius!: boolean;
   constructor() {}
 
   ngOnInit(): void {}

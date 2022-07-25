@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DayForecastComponent implements OnInit {
   @Input() day: any;
+  @Input() isCelsius!: boolean;
   @Input() dailyData: any = {
     temperature_2m_max: [],
     temperature_2m_min: [],
@@ -18,6 +19,7 @@ export class DayForecastComponent implements OnInit {
   currentDayID!: number;
   currentDay!: string;
 
+  tempUnit!: string;
   tempMax!: number;
   tempMin!: number;
   weatherCode!: number;
@@ -26,6 +28,8 @@ export class DayForecastComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges() {
+    console.log(this.isCelsius);
+    this.tempUnit = this.isCelsius ? '°C' : '°F';
     this.getDayID();
     this.getDayTempMax();
     this.getDayTempMin();
@@ -45,16 +49,26 @@ export class DayForecastComponent implements OnInit {
 
   getDayTempMax() {
     const idx = this.dailyData?.time?.indexOf(this.day);
-    this.tempMax = this.dailyData?.temperature_2m_max[idx];
+    let tempMax = this.dailyData?.temperature_2m_max[idx];
+    this.tempMax = this.tempConverter(tempMax);
   }
 
   getDayTempMin() {
     const idx = this.dailyData?.time?.indexOf(this.day);
-    this.tempMin = this.dailyData?.temperature_2m_min[idx];
+    let tempMin = this.dailyData?.temperature_2m_min[idx];
+    this.tempMin = this.tempConverter(tempMin);
   }
 
   getWeatherCode() {
     const idx = this.dailyData?.time?.indexOf(this.day);
     this.weatherCode = this.dailyData?.weathercode[idx];
+  }
+
+  tempConverter(inputTemp: number) {
+    if (this.isCelsius) {
+      return inputTemp;
+    } else {
+      return (inputTemp *= 9 / 5);
+    }
   }
 }

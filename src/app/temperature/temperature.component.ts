@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-temperature',
@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TemperatureComponent implements OnInit {
   @Input() temperature!: number;
-  isCelsius: boolean = true;
+  @Output() tempUnitChanged: EventEmitter<boolean> = new EventEmitter();
+  isCelsius!: boolean;
   constructor() {}
 
   ngOnInit(): void {}
@@ -20,6 +21,7 @@ export class TemperatureComponent implements OnInit {
     if (this.isCelsius) {
       this.isCelsius = false;
       this.temperature *= 9 / 5;
+      this.tempUnitChanged.emit(this.isCelsius);
     }
   }
 
@@ -27,6 +29,7 @@ export class TemperatureComponent implements OnInit {
     if (!this.isCelsius) {
       this.isCelsius = true;
       this.temperature *= 5 / 9;
+      this.tempUnitChanged.emit(this.isCelsius);
     }
   }
 }
