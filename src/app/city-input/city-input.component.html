@@ -1,0 +1,6 @@
+<form>
+  <input type="text" placeholder="Insert a city name" #cityName />
+  <button (click)="onCitySubmit(cityName.value); cityName.value = ''">
+    Search
+  </button>
+</form>

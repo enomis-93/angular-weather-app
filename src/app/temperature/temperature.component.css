@@ -1,0 +1,9 @@
+p {
+  cursor: pointer;
+}
+
+.selected-unit {
+  font-weight: bold;
+  color: blue;
+  border-bottom: 1px solid black;
+}

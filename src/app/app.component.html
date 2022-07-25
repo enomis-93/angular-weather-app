@@ -1,1 +1,34 @@
-{{data | json}}
+<div class="container">
+  <div class="row">
+    <div class="card mx-auto mt-5 p-4 text-light" style="width: 60rem">
+      <app-city-input (citySubmit)="setCityInfo($event)"></app-city-input>
+      <h3 class="text-center fw-bold">
+        {{ cityName }} {{ currentDateTime }} {{ dateTimeID }}
+      </h3>
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <app-weather-icon
+            [weatherCodeID]="weatherCodeID"
+            [currentTime]="currentDateTime"
+          ></app-weather-icon>
+        </div>
+        <div>
+          <app-temperature
+            [temperature]="weatherData?.current_weather?.temperature || 0"
+          ></app-temperature>
+        </div>
+      </div>
+
+      <app-weather-details
+        [timeID]="dateTimeID"
+        [data]="weatherData"
+      ></app-weather-details>
+
+      <app-week-forecast
+        [totNextDays]="weatherData?.daily?.time"
+        [dailyData]="weatherData?.daily"
+      ></app-week-forecast>
+    </div>
+  </div>
+</div>

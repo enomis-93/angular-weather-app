@@ -1,0 +1,9 @@
+<div class="d-flex my-1">
+  <hr class="my-1" />
+  <app-day-forecast
+    class="flex-grow-1 text-center"
+    *ngFor="let day of totNextDays"
+    [day]="day"
+    [dailyData]="dailyData"
+  ></app-day-forecast>
+</div>

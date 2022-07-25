@@ -1,0 +1,14 @@
+<div class="col-md-12 d-flex flex-wrap">
+  <div class="col-12 col-sm-6">
+    <i class="wi wi-strong-wind" title="wind"></i>{{ getWind() || "-" }}
+  </div>
+  <div class="col-12 col-sm-6">
+    <i class="wi wi-humidity" title="relative_humidity"></i>{{ getHumidity() }}
+  </div>
+  <div class="col-12 col-sm-6">
+    <i class="wi wi-fog" title="cloudcover"></i>{{ getCloudCoverTot() }}
+  </div>
+  <div class="col-12 col-sm-6">
+    <i class="wi wi-barometer" title="surface_pressure"></i>{{ getPressure() }}
+  </div>
+</div>

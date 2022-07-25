@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +7,26 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getData() {
+  getCoords(cityName: string) {
     return this.http.get(
-      'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m'
+      `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`
+    );
+  }
+
+  getData(
+    latitude: number,
+    longitude: number,
+    timezone: string,
+    startDate: string = '',
+    endDate: string = ''
+  ) {
+    return this.http.get(
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,cloudcover,surface_pressure,weathercode,windspeed_10m,winddirection_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&windspeed_unit=ms&timezone=${timezone}
+      ${
+        startDate && endDate
+          ? `&start_date=${startDate}&end_date=${endDate}`
+          : ''
+      }`
     );
   }
 }
