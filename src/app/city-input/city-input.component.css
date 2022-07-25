@@ -2,6 +2,7 @@ form {
   position: relative;
   margin: auto;
   margin: 1em 0em;
+  text-align: center;
 }
 
 input {
@@ -21,8 +22,8 @@ input[placeholder] {
 }
 
 button {
-  position: absolute;
-  right: 8%;
+  position: relative;
+  right: 3%;
   background-color: rgb(82, 82, 82);
   border: 1px solid white;
 
