@@ -12,6 +12,10 @@ export class TemperatureComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngOnChanges() {
+    this.isCelsius = true;
+  }
+
   convertToFarenheit() {
     if (this.isCelsius) {
       this.isCelsius = false;
