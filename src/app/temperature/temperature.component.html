@@ -1,21 +1,18 @@
 <div>
   <div class="d-flex">
-    <p
-      class="mx-2"
-      [ngClass]="isCelsius ? 'selected-unit' : ''"
-      (click)="convertToCelsius()"
-    >
-      °C
-    </p>
-    <p
-      class="mx-2"
-      [ngClass]="!isCelsius ? 'selected-unit' : ''"
-      (click)="convertToFarenheit()"
-    >
-      °F
-    </p>
+    <!-- unit selector buttons -->
+    <div class="temp_unit mx-1" [ngClass]="isCelsius ? 'selected-unit' : ''">
+      <p (click)="convertToCelsius()">°C</p>
+    </div>
+    <div class="temp_unit mx-1" [ngClass]="!isCelsius ? 'selected-unit' : ''">
+      <p (click)="convertToFarenheit()">°F</p>
+    </div>
   </div>
-  <div class="text-center">
-    {{ temperature.toFixed(1) || "0" }} {{ isCelsius ? "°C" : "°F" }}
+  <!-- Temperature -->
+  <div class="text-center d-flex justify-content-center my-1">
+    <h1>{{ temperature.toFixed(1) || "0" }}</h1>
+    <div class="text-center">
+      {{ isCelsius ? "°C" : "°F" }}
+    </div>
   </div>
 </div>

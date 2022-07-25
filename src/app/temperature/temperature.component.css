@@ -3,7 +3,23 @@ p {
 }
 
 .selected-unit {
+  background-color: darkgrey;
   font-weight: bold;
-  color: blue;
-  border-bottom: 1px solid black;
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: 1px solid white;
+  /* border-bottom: 1px solid black; */
+}
+
+.temp_unit {
+  width: 2em;
+  height: 2em;
+}
+
+.temp_unit > p {
+  text-align: center;
+  margin: 0;
+  padding: 10% 30% 0% 10%;
+  width: 2em;
+  height: 2em;
 }
