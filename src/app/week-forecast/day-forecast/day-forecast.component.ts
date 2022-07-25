@@ -82,8 +82,6 @@ export class DayForecastComponent implements OnInit {
       case 2: // Mainly Clear
         this.weatherIco = `<i class="wi wi-cloudy"></i>`;
         break;
-      // case 2: // Partly Clody
-      //   break;
       case 3: // Overcast
         this.weatherIco = '<i class="wi wi-cloudy"></i>';
         break;
@@ -91,38 +89,24 @@ export class DayForecastComponent implements OnInit {
       case 48: // Fog
         this.weatherIco = `<i class="wi wi-fog"></i>`;
         break;
-      // case 48: // Depositing rime fog
-      //   break;
       case 51:
       case 53:
       case 55: // Drizzle
         this.weatherIco = `<i class="wi wi-sprinkle"></i>`;
         break;
-      // case 53: // Drizzle: Moderate
-      //   break;
-      // case 55: // Drizzle: dense intensity
-      //   break;
       case 56:
-      case 57: // Freezing Drizzle: Light
+      case 57: // Freezing Drizzle
         this.weatherIco = `<i class="wi wi-hail"></i>`;
         break;
-      // case 57: // Freezing Drizzle: dense intensity
-      //   break;
       case 61:
       case 63:
-      case 65: // Rain: Slight
+      case 65: // Rain
         this.weatherIco = `<i class="wi wi-rain"></i>`;
         break;
-      // case 63: // Rain: moderate
-      //   break;
-      // case 65: // Rain: heavy intensity
-      //   break;
       case 66:
-      case 67: // Freezing Rain: Light
+      case 67: // Freezing Rain
         this.weatherIco = `<i class="wi wi-sleet"></i>`;
         break;
-      // case 67: // Freezing Rain: heavy intensity
-      //   break;
       case 71:
       case 73:
       case 75:
@@ -131,35 +115,16 @@ export class DayForecastComponent implements OnInit {
       case 86: // Snow fall: Slight
         this.weatherIco = `<i class="wi wi-snow"></i>`;
         break;
-      // case 73: // Snow fall: moderate
-      //   break;
-      // case 75: // Snow fall: heavy intensity
-      //   break;
-      // case 77: // Snow grains
-      // break;
-      // case 85: // Snow showers slight
-      //   break;
-      // case 86: // Snow showers heavy
-      //   break;
       case 80:
       case 81:
       case 82: // Rain showers: Slight
         this.weatherIco = `<i class="wi wi-showers"></i>`;
         break;
-      // case 81: // Rain showers: moderate
-      //   break;
-      // case 82: // Rain showers: violent
-      //   break;
-      case 95: // Thunderstorm: Slight or moderate
+      case 95:
+      case 96:
+      case 98: // Thunderstorm
         this.weatherIco = `<i class="wi wi-thunderstorm"></i>`;
         break;
-      case 96: // Thunderstorm with slight hail
-        this.weatherIco = `<i class="wi wi-sleet-storm"></i>`;
-        break;
-      case 99: // Thunderstorm with heavy hail
-        this.weatherIco = `<i class="wi wi-snow-thunderstorm"></i>`;
-        break;
-
       default:
         this.weatherIco = "<i class='wi wi-na'></i>";
         break;
