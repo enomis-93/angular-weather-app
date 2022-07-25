@@ -1,10 +1,12 @@
-<div class="d-flex my-1">
-  <hr class="my-1" />
-  <app-day-forecast
-    class="flex-grow-1 text-center"
-    *ngFor="let day of totNextDays"
-    [day]="day"
-    [dailyData]="dailyData"
-    [isCelsius]="isCelsius"
-  ></app-day-forecast>
+<div class="my-3">
+  <hr class="my-4" />
+  <div class="row">
+    <app-day-forecast
+      class="card m-2 flex-grow-1 text-center col-12 col-sm-3 col-md-2 col-lg-1"
+      *ngFor="let day of totNextDays; let i = index"
+      [day]="day"
+      [dailyData]="dailyData"
+      [isCelsius]="isCelsius"
+    ></app-day-forecast>
+  </div>
 </div>

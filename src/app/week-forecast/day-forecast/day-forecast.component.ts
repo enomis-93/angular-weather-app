@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DayForecastComponent implements OnInit {
   @Input() day: any;
   @Input() isCelsius!: boolean;
+  @Input() index!: number;
   @Input() dailyData: any = {
     temperature_2m_max: [],
     temperature_2m_min: [],
