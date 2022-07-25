@@ -1,6 +1,7 @@
 <div class="my-2 mx-2 border-light border-start border-1">
   <h4>{{ currentDay }}</h4>
-  <p>{{ weatherCode }}</p>
+  <h3 [innerHTML]="weatherIco"></h3>
+  <h3>{{ weatherCode }}</h3>
   <p class="fw-bold p-1">
     <i class="wi wi-direction-up p-1"></i>{{ tempMax.toFixed(1) }}
     {{ tempUnit }}

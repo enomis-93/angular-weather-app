@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngOnChanges() {}
+
   setCityInfo(city: any) {
     // console.log(city);
 
