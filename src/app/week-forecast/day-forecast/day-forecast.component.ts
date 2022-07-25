@@ -63,7 +63,6 @@ export class DayForecastComponent implements OnInit {
     const idx = this.dailyData?.time?.indexOf(this.day);
     let weatherCode = this.dailyData?.weathercode[idx];
     this.setWeatherIco(weatherCode);
-    this.weatherCode = weatherCode;
   }
 
   tempConverter(inputTemp: number) {
