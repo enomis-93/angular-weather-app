@@ -1,6 +1,5 @@
 form {
   position: relative;
-  margin: auto;
   margin: 1em 0em;
   text-align: center;
 }
@@ -10,7 +9,6 @@ input {
   left: 5%;
   width: 75%;
   background-color: rgba(255, 255, 255, 0.4);
-  padding: 0.2em;
   border: 1px solid white;
   border-radius: 20px 0px 0px 20px;
 }
