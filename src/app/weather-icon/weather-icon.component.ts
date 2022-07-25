@@ -26,7 +26,8 @@ export class WeatherIconComponent implements OnInit {
           ? (this.weatherIco = `<i class="wi wi-day-sunny"></i>`)
           : (this.weatherIco = '<i class="wi wi-night-clear"></i>');
         break;
-      case 1 || 2: // Mainly Clear
+      case 1:
+      case 2: // Mainly Clear
         this.weatherIco = `<i class="wi wi-${dayTime}cloudy"></i>`;
         break;
       // case 2: // Partly Clody
