@@ -29,16 +29,19 @@ export class AppComponent implements OnInit {
 
   setCityInfo(city: any) {
     // console.log(city);
-
-    this.service.getCoords(city).subscribe((res: any) => {
-      let response = res.results[0];
-      // console.log(response);
-      this.cityName = response.name;
-      this.latitude = response.latitude;
-      this.longitude = response.longitude;
-      this.timeZone = response.timezone;
-      this.getWeatherInfo();
-    });
+    if (this.cityName) {
+      this.service.getCoords(city).subscribe((res: any) => {
+        let response = res.results[0];
+        // console.log(response);
+        this.cityName = response.name;
+        this.latitude = response.latitude;
+        this.longitude = response.longitude;
+        this.timeZone = response.timezone;
+        this.getWeatherInfo();
+      });
+    } else {
+      alert('City Input is empty!');
+    }
   }
 
   getWeatherInfo() {
