@@ -14,7 +14,9 @@ export class WeatherIconComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.weatherIco = "<i class='wi wi-na'></i>";
+  }
 
   ngOnChanges(): void {
     this.dayTimeString(this.time);
