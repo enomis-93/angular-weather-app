@@ -11,6 +11,7 @@ import * as moment from 'moment';
 export class AppComponent implements OnInit {
   title = 'weather-app';
   cityName!: string;
+  date!: string;
   weatherData!: any;
   latitude!: number;
   longitude!: number;
@@ -24,7 +25,11 @@ export class AppComponent implements OnInit {
   dailyData!: string[];
   constructor(private service: WeatherService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentDateTime = moment(this.currentDateTime).format(
+      'MMMM Do YYYY, h:mm a'
+    );
+  }
 
   ngOnChanges() {}
 
@@ -51,7 +56,10 @@ export class AppComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.weatherData = res;
-        this.currentDateTime = moment().format('MMMM Do YYYY, h:mm a');
+        this.currentDateTime = res.current_weather.time;
+        this.date = moment(res.current_weather.time).format(
+          'MMMM Do YYYY, h:mm a'
+        );
         this.dateList = res.hourly.time;
         this.dateTimeID = this.dateList.indexOf(this.currentDateTime);
         this.weatherCodeID = res.hourly.weathercode[this.dateTimeID];
