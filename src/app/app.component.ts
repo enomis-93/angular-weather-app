@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +51,7 @@ export class AppComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.weatherData = res;
-        this.currentDateTime = res.current_weather.time;
+        this.currentDateTime = moment().format('MMMM Do YYYY, h:mm a');
         this.dateList = res.hourly.time;
         this.dateTimeID = this.dateList.indexOf(this.currentDateTime);
         this.weatherCodeID = res.hourly.weathercode[this.dateTimeID];
