@@ -29,4 +29,9 @@ export class WeatherService {
       }`
     );
   }
+  getCityFromCoords(latitude: number, longitude: number) {
+    return this.http.get(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+    );
+  }
 }

@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,24 @@ export class AppComponent implements OnInit {
   dailyData!: string[];
   constructor(private service: WeatherService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Obtain geo data from Geolocation API
+    this.getPosition().subscribe((pos) => {
+      console.log(pos);
+      console.log(pos.coords.latitude);
+      console.log(pos.coords.longitude);
+      this.latitude = pos.coords.latitude;
+      this.longitude = pos.coords.longitude;
+      this.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      this.service
+        .getCityFromCoords(this.latitude, this.longitude)
+        .subscribe((res: any) => {
+          console.log(res);
+          this.cityName = res.locality;
+        });
+      this.getWeatherInfo();
+    });
+  }
 
   ngOnChanges() {}
 
@@ -61,6 +79,18 @@ export class AppComponent implements OnInit {
         this.weatherCodeID = res.hourly.weathercode[this.dateTimeID];
         this.dailyData = res.daily;
       });
+  }
+
+  getPosition(): Observable<any> {
+    return new Observable((observer) => {
+      window.navigator.geolocation.getCurrentPosition(
+        (position) => {
+          observer.next(position);
+          observer.complete();
+        },
+        (error) => observer.error(error)
+      );
+    });
   }
 
   tempUnitHandler(isCelsius: any) {

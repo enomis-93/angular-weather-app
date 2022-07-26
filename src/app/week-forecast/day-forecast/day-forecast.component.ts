@@ -39,7 +39,7 @@ export class DayForecastComponent implements OnInit {
 
   getDayID() {
     const d = new Date(this.day);
-    console.log(d.getDay());
+    // console.log(d.getDay());
     this.currentDayID = d.getDay();
     this.currentDay = this.weekday[this.currentDayID];
   }
