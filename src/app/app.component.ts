@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
 
   ngOnChanges() {}
 
-  setCityInfo(city: any) {
+  setCityInfo(city: string) {
     // console.log(city);
-    if (this.cityName) {
+    if (city) {
       this.service.getCoords(city).subscribe((res: any) => {
         let response = res.results[0];
         // console.log(response);
