@@ -12,6 +12,7 @@ import { WeatherDetailsComponent } from './weather-details/weather-details.compo
 import { WeatherIconComponent } from './weather-icon/weather-icon.component';
 import { WeekForecastComponent } from './week-forecast/week-forecast.component';
 import { DayForecastComponent } from './week-forecast/day-forecast/day-forecast.component';
+import { TempConverterPipe } from './pipes/temp-converter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DayForecastComponent } from './week-forecast/day-forecast/day-forecast.
     WeatherIconComponent,
     WeekForecastComponent,
     DayForecastComponent,
+    TempConverterPipe,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [WeatherService],

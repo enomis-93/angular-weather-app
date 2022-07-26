@@ -25,11 +25,7 @@ export class AppComponent implements OnInit {
   dailyData!: string[];
   constructor(private service: WeatherService) {}
 
-  ngOnInit(): void {
-    this.currentDateTime = moment(this.currentDateTime).format(
-      'MMMM Do YYYY, h:mm a'
-    );
-  }
+  ngOnInit(): void {}
 
   ngOnChanges() {}
 
