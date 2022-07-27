@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  lang!: string;
+  lang: string = localStorage.getItem('lang') || 'en';
   title = 'weather-app';
   cityName!: string;
   date!: string;
