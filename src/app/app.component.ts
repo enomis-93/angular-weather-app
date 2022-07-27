@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  lang!: string;
   title = 'weather-app';
   cityName!: string;
   date!: string;
@@ -24,14 +26,21 @@ export class AppComponent implements OnInit {
   weatherCodeID!: number;
   dateList!: string[];
   dailyData!: string[];
-  constructor(private service: WeatherService) {}
+
+  constructor(
+    private service: WeatherService,
+    private translateService: TranslateService
+  ) {
+    this.translateService.setDefaultLang('en');
+    this.translateService.use(localStorage.getItem('lang') || 'en');
+  }
 
   ngOnInit(): void {
     // Obtain geo data from Geolocation API
     this.getPosition().subscribe((pos) => {
-      console.log(pos);
-      console.log(pos.coords.latitude);
-      console.log(pos.coords.longitude);
+      // console.log(pos);
+      // console.log(pos.coords.latitude);
+      // console.log(pos.coords.longitude);
       this.latitude = pos.coords.latitude;
       this.longitude = pos.coords.longitude;
       this.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -45,7 +54,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnChanges() {}
+  ngOnChanges() {
+    console.log(this.lang);
+  }
 
   setCityInfo(city: string) {
     // console.log(city);
@@ -95,5 +106,12 @@ export class AppComponent implements OnInit {
 
   tempUnitHandler(isCelsius: any) {
     this.isCelsius = isCelsius;
+  }
+
+  switchLang(event: any) {
+    // console.log(event.target.value);
+    localStorage.setItem('lang', event.target.value);
+    this.lang = localStorage.getItem('lang') || 'en';
+    // window.location.reload();
   }
 }

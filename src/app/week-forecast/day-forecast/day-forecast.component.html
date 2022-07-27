@@ -1,5 +1,5 @@
 <div class="my-2 mx-2">
-  <h4>{{ currentDay }}</h4>
+  <h4>{{ currentDay | translate }}</h4>
   <h3 [innerHTML]="weatherIco"></h3>
   <p class="fw-bold p-1">
     <i class="wi wi-direction-up p-1"></i>{{ tempMax.toFixed(1) }}

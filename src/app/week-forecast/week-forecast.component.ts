@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./week-forecast.component.css'],
 })
 export class WeekForecastComponent implements OnInit {
+  @Input() lang!: string;
   @Input() totNextDays!: string[];
   @Input() dailyData!: [];
   @Input() isCelsius!: boolean;

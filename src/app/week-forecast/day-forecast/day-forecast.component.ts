@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-day-forecast',
@@ -6,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./day-forecast.component.css'],
 })
 export class DayForecastComponent implements OnInit {
+  @Input() lang!: string;
   @Input() day: any;
   @Input() isCelsius!: boolean;
   @Input() index!: number;
@@ -25,11 +27,16 @@ export class DayForecastComponent implements OnInit {
   tempMin!: number;
   weatherCode!: number;
   weatherIco!: string;
-  constructor() {}
+
+  constructor(private translateService: TranslateService) {
+    this.translateService.setDefaultLang('en');
+  }
 
   ngOnInit(): void {}
 
   ngOnChanges() {
+    // console.log(this.lang);
+    this.translateService.use(localStorage.getItem('lang') || 'en');
     this.tempUnit = this.isCelsius ? '°C' : '°F';
     this.getDayID();
     this.getDayTempMax();

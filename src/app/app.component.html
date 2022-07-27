@@ -1,13 +1,23 @@
 <div class="container">
   <div class="row mx-auto col-11 col-md-11">
     <div class="card my-4 p-4 text-light" style="width: 60rem">
+      <!-- Switch Language -->
+      <div class="col-12 text-end">
+        <select (change)="switchLang($event)">
+          <option value="en" [selected]="lang == 'en'">English</option>
+          <option value="it" [selected]="lang == 'it'">Italian</option>
+        </select>
+      </div>
+
+      <!-- ------------------ -->
       <app-city-input
         class="col-12"
         (citySubmit)="setCityInfo($event)"
       ></app-city-input>
-      <!-- City -->
+      <!--  ----- City ------ -->
       <h3 class="text-center fw-bold">{{ cityName }}</h3>
       <h3 class="text-center fw-bold">{{ date }}</h3>
+      <!-- ------------------ -->
 
       <div class="d-flex justify-content-between">
         <div>
@@ -32,6 +42,7 @@
         [totNextDays]="weatherData?.daily?.time"
         [dailyData]="weatherData?.daily"
         [isCelsius]="isCelsius"
+        [lang]="lang"
       ></app-week-forecast>
     </div>
   </div>
