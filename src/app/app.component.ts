@@ -82,9 +82,9 @@ export class AppComponent implements OnInit {
         console.log(res);
         this.weatherData = res;
         this.currentDateTime = res.current_weather.time;
-        this.date = moment(res.current_weather.time).format(
-          'MMMM Do YYYY, h:mm a'
-        );
+        this.date = moment(res.current_weather.time)
+          .locale(this.lang)
+          .format('LLL');
         this.dateList = res.hourly.time;
         this.dateTimeID = this.dateList.indexOf(this.currentDateTime);
         this.weatherCodeID = res.hourly.weathercode[this.dateTimeID];
@@ -112,6 +112,7 @@ export class AppComponent implements OnInit {
     // console.log(event.target.value);
     localStorage.setItem('lang', event.target.value);
     this.lang = localStorage.getItem('lang') || 'en';
+    this.date = moment(this.currentDateTime).locale(this.lang).format('LLL');
     // window.location.reload();
   }
 }
